@@ -1,6 +1,13 @@
 html
   head
     title= title
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- endbower -->
   body
-    h1= message
-    p #{name}'s Pug source code!
+    div.container
+      div.row
+        div.col-md-12
+          h1= message
+          p #{name}'s Pug source code!!
+          div.btn.btn-default Button
