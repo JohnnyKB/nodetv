@@ -1,0 +1,31 @@
+html
+  head
+    title Welcome to NodeTV!
+    <!--bower:css-->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <!--endbower-->
+    //- inject:css
+    link(rel="stylesheet", href="/css/style.css")
+    //- endinject
+    //- inject:js
+    script(src="/js/test.js")
+    //- endinject
+  body
+    .container
+      .row
+        .col-md-6
+          h1 Welcome to NodeTV Index!
+          each show in shows
+            .show-entry
+              a(href= "/show/" + show.slug)
+                h2.show-name= show.name
+              p.show-description= show.description
+              a(href="/deleteOne/"+show._id) Delete
+        .col-md-6
+          h2 Add new show
+          form(action="/addshow", method="POST")
+            input.form-control(name="name", type="text")
+            br
+            textarea.form-control(name="description")
+            br
+            button(type="submit") Submit new show

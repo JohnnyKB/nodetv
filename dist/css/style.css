@@ -1,0 +1,10 @@
+.show-entry {
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px; }
+
+.show-name {
+  font-weight: 900;
+  color: #666;
+  margin-top: 0; }
