@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addshow', urlencodedParser, (req, res) => {
+  // TODO: add check if show already exists
   // request manipulation
   var body = req.body;
   body.slug = req.body.name.toLowerCase().replace(/\s/gi, '-');
@@ -88,9 +89,13 @@ app.get('/show/:slug', (req, res) => {
   mongodb.connect(url, function(err, db) {
       var collection = db.collection('shows'); // if it doesn't exist, mongoDB wil create it
       collection.findOne({slug: slug}, function(err, result){
-        res.render('show', {
-          show: result
-        });
+        if (result) {
+          res.render('show', {
+            show: result
+          });
+        } else {
+          res.send(`the slug doesn't match any show in the db`);
+        }
         db.close();
       })
     })
